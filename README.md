@@ -1,6 +1,31 @@
-# 🎮 PSN Game Tracker 
-
+# 🎮 PSN Game Tracker
 - Third-Party Game Information Management Platform
+
+A third-party PlayStation Network (PSN) game information management platform that allows users to log in with their PSN accounts and view their personal game statistics, including total playtime, trophy progress, and achievement completion. Inspired by platforms like “Xiaohei Box.”
+
+---
+
+## 🔥 Key Features
+
+- 🔐 PSN OAuth login (via unofficial API)
+- 🏆 Real-time sync of trophy data (Platinum, Gold, Silver, Bronze)
+- 📊 Display of playtime, completion rates, and trophy progress
+- 🧑‍💻 Personalized user dashboard
+- 📈 Trophy and gameplay data visualization
+- ⏰ Scheduled auto-sync of user game data
+
+---
+
+## 🛠 Tech Stack
+
+| Layer     | Technology                    |
+|-----------|-------------------------------|
+| Frontend  | React + Next.js + Mantine UI |
+| Backend   | Node.js (Express) or Spring Boot |
+| Auth      | Sony OAuth (Unofficial via `psn-api`) |
+| Database  | MongoDB or PostgreSQL         |
+| Hosting   | Vercel (frontend), Render or Railway (backend), MongoDB Atlas |
+
 
 一个基于 PSN（PlayStation Network）账号的第三方游戏信息展示平台，支持用户登录后查看其游戏记录、奖杯统计、游玩时长等数据，致力于打造游戏成就的可视化中心。
 
