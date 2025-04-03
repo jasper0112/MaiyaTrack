@@ -21,11 +21,12 @@ A third-party PlayStation Network (PSN) game information management platform tha
 | Layer     | Technology                    |
 |-----------|-------------------------------|
 | Frontend  | React + Next.js + Mantine UI |
-| Backend   | Node.js (Express) or Spring Boot |
+| Backend   | Spring Boot |
 | Auth      | Sony OAuth (Unofficial via `psn-api`) |
-| Database  | MongoDB or PostgreSQL         |
+| Database  | MongoDB |
 | Hosting   | Vercel (frontend), Render or Railway (backend), MongoDB Atlas |
 
+---
 
 一个基于 PSN（PlayStation Network）账号的第三方游戏信息展示平台，支持用户登录后查看其游戏记录、奖杯统计、游玩时长等数据，致力于打造游戏成就的可视化中心。
 
@@ -45,9 +46,9 @@ A third-party PlayStation Network (PSN) game information management platform tha
 | 层级   | 技术               |
 |--------|--------------------|
 | 前端   | React + Next.js + Mantine UI |
-| 后端   | Node.js + Express / Spring Boot |
+| 后端   | Spring Boot |
 | 鉴权   | Sony OAuth 模拟登录（psn-api） |
-| 数据库 | MongoDB / PostgreSQL |
+| 数据库 | MongoDB |
 | 部署   | Vercel（前端）+ Render（后端）+ Mongo Atlas（DB） |
 
 
