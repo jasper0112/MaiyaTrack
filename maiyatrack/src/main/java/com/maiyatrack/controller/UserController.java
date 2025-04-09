@@ -1,6 +1,6 @@
 package com.maiyatrack.controller;
 
-import com.maiyatrack.dto.UserDTO;
+import com.maiyatrack.dto.LoginDTO;
 import com.maiyatrack.entity.User;
 import com.maiyatrack.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,20 @@ public class UserController {
     private UserService userService;
     
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> register(@RequestBody LoginDTO userDTO) {
         User user = userService.registerUser(userDTO);
         return ResponseEntity.ok(user);
     }
     
+    // @PostMapping("/login")
+    // public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password) {
+    //     User user = userService.login(email, password);
+    //     return ResponseEntity.ok(user);
+    // }
+
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password) {
-        User user = userService.login(email, password);
-        return ResponseEntity.ok(user);
+    public User login(@RequestBody LoginDTO loginDTO) {
+        return userService.login(loginDTO.getEmail(), loginDTO.getPassword());
     }
+
 } 

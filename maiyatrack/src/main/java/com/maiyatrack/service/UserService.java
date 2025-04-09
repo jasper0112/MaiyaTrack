@@ -1,6 +1,6 @@
 package com.maiyatrack.service;
 
-import com.maiyatrack.dto.UserDTO;
+import com.maiyatrack.dto.LoginDTO;
 import com.maiyatrack.entity.User;
 import com.maiyatrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     
-    public User registerUser(UserDTO userDTO) {
+    public User registerUser(LoginDTO userDTO) {
         if (userRepository.existsByEmail(userDTO.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
