@@ -6,9 +6,12 @@ import com.maiyatrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 
 @Service
+@Transactional
 public class UserService {
     
     @Autowired
@@ -22,6 +25,18 @@ public class UserService {
             throw new RuntimeException("Email already exists");
         }
         
+        if (registerDTO.getEmail() == null || registerDTO.getEmail().isEmpty()) {
+            throw new RuntimeException("Email is required");
+        }
+        
+        if (registerDTO.getPassword() == null || registerDTO.getPassword().isEmpty()) {
+            throw new RuntimeException("Password is required");
+        }
+        
+        if (registerDTO.getUsername() == null || registerDTO.getUsername().isEmpty()) {
+            throw new RuntimeException("Username is required");
+        }
+        
         User user = new User();
         user.setEmail(registerDTO.getEmail());
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
@@ -31,6 +46,11 @@ public class UserService {
         user.setEnabled(true);
         
         return userRepository.save(user);
+    }
+    
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
     
     public User login(String email, String password) {
