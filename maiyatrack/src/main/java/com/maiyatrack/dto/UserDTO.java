@@ -1,5 +1,6 @@
 package com.maiyatrack.dto;
 
+import com.maiyatrack.entity.Role;
 import java.time.LocalDateTime;
 
 public class UserDTO {
@@ -9,7 +10,7 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String role;
+    private Role role;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private boolean active;
@@ -63,11 +64,11 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

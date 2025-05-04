@@ -33,11 +33,11 @@ public class UserController {
     
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody UserDTO registerDTO) {
-        User user = userService.registerUser(registerDTO);
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+        UserDTO userDTO = userService.createUser(registerDTO);
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);
         
-        AuthResponse response = new AuthResponse(jwt, user.getEmail(), user.getUsername());
+        AuthResponse response = new AuthResponse(jwt, userDTO.getEmail(), userDTO.getFirstName());
         return ResponseEntity.ok(response);
     }
     
@@ -50,8 +50,8 @@ public class UserController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(loginDTO.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);
         
-        User user = userService.getUserByEmail(loginDTO.getEmail());
-        AuthResponse response = new AuthResponse(jwt, user.getEmail(), user.getUsername());
+        UserDTO userDTO = userService.getUserByEmail(loginDTO.getEmail());
+        AuthResponse response = new AuthResponse(jwt, userDTO.getEmail(), userDTO.getFirstName());
         return ResponseEntity.ok(response);
     }
     
@@ -100,9 +100,8 @@ public class UserController {
     @PutMapping("/{id}/change-password")
     public ResponseEntity<Void> changePassword(
             @PathVariable String id,
-            @RequestParam String oldPassword,
             @RequestParam String newPassword) {
-        userService.changePassword(id, oldPassword, newPassword);
+        userService.changePassword(id, newPassword);
         return ResponseEntity.ok().build();
     }
 } 
