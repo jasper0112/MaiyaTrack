@@ -5,6 +5,9 @@ import com.maiyatrack.dto.UserDTO;
 import com.maiyatrack.entity.User;
 import com.maiyatrack.security.JwtUtil;
 import com.maiyatrack.service.UserService;
+
+import lombok.Data;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
