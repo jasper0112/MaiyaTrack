@@ -70,11 +70,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className='login_page'>
+    <div>
       <form onSubmit={handleLogin} className={classes.login_form}>
         <TooltipIcon />
         <TooltipFocus />
-        <button type="submit" className='login_button'>
+        <button type="submit" className={classes.login_button}>
           Login
         </button>
       </form>
