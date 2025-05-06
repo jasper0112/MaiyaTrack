@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { Center, PasswordInput, Text, TextInput, Tooltip } from '@mantine/core';
+import classes from "./login.module.css"
 
 
 function TooltipIcon() {
@@ -29,37 +30,36 @@ function TooltipIcon() {
     );
   }
   
-  function TooltipFocus() {
-    const [opened, setOpened] = useState(false);
-    const [value, setValue] = useState('');
-    const valid = value.trim().length >= 6;
-    return (
-      <Tooltip
-        label={valid ? 'All good!' : 'Password must include at least 6 characters'}
-        position="bottom-start"
-        withArrow
-        opened={opened}
-        color={valid ? 'teal' : undefined}
-        withinPortal
-      >
-        <PasswordInput
-          label="Tooltip shown onFocus"
-          required
-          placeholder="Your password"
-          onFocus={() => setOpened(true)}
-          onBlur={() => setOpened(false)}
-          mt="md"
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        />
-      </Tooltip>
-    );
-  }
+function TooltipFocus() {
+  const [opened, setOpened] = useState(false);
+  const [value, setValue] = useState('');
+  const valid = value.trim().length >= 6;
+  return (
+    <Tooltip
+      label={valid ? 'All good!' : 'Password must include at least 6 characters'}
+      position="bottom-start"
+      withArrow
+      opened={opened}
+      color={valid ? 'teal' : undefined}
+      withinPortal
+    >
+      <PasswordInput
+        label="Tooltip shown onFocus"
+        required
+        placeholder="Your password"
+        onFocus={() => setOpened(true)}
+        onBlur={() => setOpened(false)}
+        mt="md"
+        value={value}
+        onChange={(event) => setValue(event.currentTarget.value)}
+      />
+    </Tooltip>
+  );
+}
   
 
-
-
 export default function LoginPage() {
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -70,33 +70,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div
-      style={{
-        maxWidth: '400px',
-        margin: '100px auto',
-        padding: '2rem',
-        border: '1px solid #ddd',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        backgroundColor: 'white',
-      }}
-    >
-      <form onSubmit={handleLogin}>
+    <div className='login_page'>
+      <form onSubmit={handleLogin} className={classes.login_form}>
         <TooltipIcon />
         <TooltipFocus />
-        <button
-          type="submit"
-          style={{
-            marginTop: '1rem',
-            width: '100%',
-            padding: '0.5rem',
-            backgroundColor: '#1c7ed6',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
+        <button type="submit" className='login_button'>
           Login
         </button>
       </form>
